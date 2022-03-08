@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/screen/kelengkapan_biodata.dart';
+import 'package:kuisoner_app/widget/bottomnavbar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -93,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               fontWeight: FontWeight.w500,
                               color: cLightBlue),
                           suffixIcon: IconButton(
+                            color: cLightBlue,
                             onPressed: () => setState(() {
                               isObscure = !isObscure;
                             }),
@@ -113,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => KelengkapanBiodata()));
+                                  builder: (_) => CustomBottomNavBar()));
                         }
                       : null,
                   child: Container(
@@ -177,28 +179,36 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * 0.6,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 50, bottom: 25),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Tidak punya Akun? ",
-                        style: GoogleFonts.raleway(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff979797),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => KelengkapanBiodata()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 50, bottom: 25),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Tidak punya Akun? ",
+                          style: GoogleFonts.raleway(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xff979797),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Buat Akun",
-                        style: GoogleFonts.raleway(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: cDarkBlue,
+                        Text(
+                          "Buat Akun",
+                          style: GoogleFonts.raleway(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: cDarkBlue,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 //! ====CHildreen main =====

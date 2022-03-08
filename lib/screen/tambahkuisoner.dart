@@ -18,6 +18,12 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
   final _usiaMinimalTextContoler = TextEditingController();
   final _usiaMaxTextControler = TextEditingController();
   final _opsionalTextCotroler = TextEditingController();
+  String? selectedGender,
+      selectedPekerjaan,
+      selectedStatus,
+      selectedDomisi,
+      selectedPaket,
+      selectedPembayaran;
 
   @override
   void dispose() {
@@ -26,6 +32,37 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
     _usiaMinimalTextContoler.dispose();
     _opsionalTextCotroler.dispose();
     super.dispose();
+  }
+
+  bool inputCheck() {
+    if (selectedPaket == "Gratis") {
+      if (_linkTextControler.text.isNotEmpty &&
+          _usiaMaxTextControler.text.isNotEmpty &&
+          _usiaMinimalTextContoler.text.isNotEmpty &&
+          selectedGender != null &&
+          selectedPekerjaan != null &&
+          selectedStatus != null &&
+          selectedDomisi != null &&
+          selectedPaket != null) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      if (_linkTextControler.text.isNotEmpty &&
+          _usiaMaxTextControler.text.isNotEmpty &&
+          _usiaMinimalTextContoler.text.isNotEmpty &&
+          selectedGender != null &&
+          selectedPekerjaan != null &&
+          selectedStatus != null &&
+          selectedDomisi != null &&
+          selectedPaket != null &&
+          selectedPembayaran != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   @override
@@ -139,19 +176,49 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                     textInputAction: TextInputAction.next,
                   ),
                 ),
+                //++Gender++
                 DropDownCustom(
                   kataHint: "Gender",
                   data: gender,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedGender = state;
+                    });
+                  },
                 ),
+
                 //++Pekerjaan++
                 DropDownCustom(
-                    kataHint: "Pekerjaan kamu saat ini", data: pekerjaan),
+                  kataHint: "Pekerjaan kamu saat ini",
+                  data: pekerjaan,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedPekerjaan = state;
+                    });
+                  },
+                ),
 
                 //++Status++
-                DropDownCustom(kataHint: "Status kamu saat in", data: status),
+                DropDownCustom(
+                  kataHint: "Status kamu saat in",
+                  data: status,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedStatus = state;
+                    });
+                  },
+                ),
+
                 //++Domisi++
                 DropDownCustom(
-                    kataHint: "Domisili kamu saat ini", data: domisi),
+                  kataHint: "Domisili kamu saat ini",
+                  data: domisi,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedDomisi = state;
+                    });
+                  },
+                ),
 
                 //!sub childreen kriteria
               ],
@@ -285,7 +352,14 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                   height: 10,
                 ),
                 DropDownCustom(
-                    kataHint: "Pilih paket sebar kuesioner", data: paket),
+                  kataHint: "Pilih paket sebar kuesioner",
+                  data: paket,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedPaket = state;
+                    });
+                  },
+                ),
               ],
             ),
           ),
@@ -320,8 +394,40 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                DropDownCustom(
-                    kataHint: "Pilih metode pembayaran", data: pembayaran),
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: selectedPaket == "Gratis"
+                        ? Container(
+                            height: MediaQuery.of(context).size.height * 0.08,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            padding: const EdgeInsets.only(right: 8, left: 8),
+                            margin: const EdgeInsets.only(
+                              bottom: 10,
+                            ),
+                            decoration: BoxDecoration(
+                                color: cGreyYellow,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Center(
+                              child: Text(
+                                "Paket Gratis Tidak Perlu Pembayaran",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: cLightBlue,
+                                ),
+                              ),
+                            ),
+                          )
+                        : DropDownCustom(
+                            kataHint: "Pilih metode pembayaran",
+                            data: pembayaran,
+                            onStateChanged: (state) {
+                              setState(() {
+                                selectedPembayaran = state;
+                              });
+                            },
+                          )),
               ],
             ),
           ),
@@ -331,14 +437,18 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
           Container(
             margin: const EdgeInsets.only(left: 8, right: 8),
             child: TextButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => PaymentSuccesPage()));
-              },
+              onPressed: inputCheck()
+                  ? () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => PaymentSuccesPage()));
+                    }
+                  : null,
               style: TextButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
-                backgroundColor: cDarkYellow,
+                backgroundColor: inputCheck() ? cDarkYellow : cLightYellow,
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.8,
                     MediaQuery.of(context).size.height * 0.07),
               ),

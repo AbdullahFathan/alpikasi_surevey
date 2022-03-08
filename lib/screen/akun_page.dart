@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
-import 'package:kuisoner_app/screen/personal_data.dart';
 
-class KelengkapanBiodata extends StatefulWidget {
-  const KelengkapanBiodata({Key? key}) : super(key: key);
+class AkunPage extends StatefulWidget {
+  const AkunPage({Key? key}) : super(key: key);
 
   @override
-  _KelengkapanBiodataState createState() => _KelengkapanBiodataState();
+  State<AkunPage> createState() => _AkunPageState();
 }
 
-class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
+class _AkunPageState extends State<AkunPage> {
   final _emailInputControler = TextEditingController();
   final _passInputControler = TextEditingController();
   final _namaInputControler = TextEditingController();
@@ -44,27 +43,50 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-          child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 55, top: 25),
-                    child: Text(
-                      "Belum Punya Akun? \nBuat Akun \nTerlebih Dahulu!",
-                      style: GoogleFonts.poppins(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                        color: cDarkBlue,
+                child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(
+                          "assets/images/arrow_left.png",
+                          height: 28,
+                          width: 22,
+                        ),
                       ),
-                    ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      Text(
+                        "Ubah Informasi Akun",
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: cDarkBlue,
+                        ),
+                      )
+                    ],
                   ),
-                  Column(
-                    children: <Widget>[
-                      // masukan email
+                ),
+                const SizedBox(
+                  height: 45,
+                ),
+
+                //*===={Informasi Akun user}=====
+                Center(
+                  child: Column(
+                    children: [
                       Container(
                         padding: const EdgeInsets.only(right: 8, left: 8),
                         margin: const EdgeInsets.only(bottom: 14),
@@ -141,16 +163,39 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
+                ),
+              ],
+            )),
+
+            //Button
             TextButton(
               onPressed: isContinue
                   ? () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => PersonalDataScreen()));
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: Text(
+                                  "Data telah disimpan",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: cDarkBlue,
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("Okay",
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                          color: cLightBlue,
+                                        )),
+                                  ),
+                                ],
+                              ));
                     }
                   : null,
               style: TextButton.styleFrom(
@@ -160,7 +205,7 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.8,
                     MediaQuery.of(context).size.height * 0.07),
               ),
-              child: Text("ISI KELENGKAPAN BIODATA",
+              child: Text("SIMPAN",
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w700,
                       fontSize: 14,
@@ -171,7 +216,7 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

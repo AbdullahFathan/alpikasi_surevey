@@ -5,10 +5,14 @@ import 'package:kuisoner_app/models/colors.dart';
 
 class DropDownCustom extends StatefulWidget {
   String kataHint;
+  DropDownControler controlerDropDown = DropDownControler();
+  Function(String)? onStateChanged;
+
   List<String> data;
   DropDownCustom({
     Key? key,
     required this.kataHint,
+    this.onStateChanged,
     required this.data,
   }) : super(key: key);
 
@@ -17,7 +21,17 @@ class DropDownCustom extends StatefulWidget {
 }
 
 class _DropDownCustomState extends State<DropDownCustom> {
-  Object? selected;
+  String? selected;
+
+  hasFill() {
+    setState(() {
+      if (selected!.isNotEmpty) {
+        widget.controlerDropDown.isHasFill = selected!;
+
+        widget.onStateChanged!(widget.controlerDropDown.isHasFill);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +48,7 @@ class _DropDownCustomState extends State<DropDownCustom> {
         child: DropdownButton(
           icon: const Icon(
             Icons.keyboard_arrow_down_sharp,
+            color: cDarkBlue,
             size: 25,
           ),
           isExpanded: true,
@@ -46,9 +61,12 @@ class _DropDownCustomState extends State<DropDownCustom> {
               color: cLightBlue,
             ),
           ),
-          onChanged: (value) => setState(() {
-            selected = value;
-          }),
+          onChanged: (value) => setState(
+            () {
+              selected = value.toString();
+              hasFill();
+            },
+          ),
           items: widget.data.map(buildMenuItem).toList(),
         ),
       ),
@@ -67,3 +85,8 @@ DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
         ),
       ),
     );
+
+class DropDownControler {
+  String isHasFill;
+  DropDownControler({this.isHasFill = ""});
+}

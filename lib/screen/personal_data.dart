@@ -14,12 +14,25 @@ class PersonalDataScreen extends StatefulWidget {
 
 class _PersonalDataScreenState extends State<PersonalDataScreen> {
   DateTime? tanggalLahir;
+  String? selectedGender, selectedPekerjaan, selectedStatus, selectedDomisi;
 
   String getText() {
     if (tanggalLahir == null) {
       return "Tanggal Lahir";
     } else {
       return "${tanggalLahir!.day}-${tanggalLahir!.month}-${tanggalLahir!.year}";
+    }
+  }
+
+  bool inputCheck() {
+    if (selectedGender != null &&
+        tanggalLahir != null &&
+        selectedPekerjaan != null &&
+        selectedStatus != null &&
+        selectedDomisi != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -113,29 +126,60 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                 DropDownCustom(
                   kataHint: "Gender",
                   data: gender,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedGender = state;
+                    });
+                  },
                 ),
 
                 //++Pekerjaan++
                 DropDownCustom(
-                    kataHint: "Pekerjaan kamu saat ini", data: pekerjaan),
+                  kataHint: "Pekerjaan kamu saat ini",
+                  data: pekerjaan,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedPekerjaan = state;
+                    });
+                  },
+                ),
 
                 //++Status++
-                DropDownCustom(kataHint: "Status kamu saat in", data: status),
+                DropDownCustom(
+                  kataHint: "Status kamu saat in",
+                  data: status,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedStatus = state;
+                    });
+                  },
+                ),
 
                 //++Domisi++
                 DropDownCustom(
-                    kataHint: "Domisili kamu saat ini", data: domisi),
+                  kataHint: "Domisili kamu saat ini",
+                  data: domisi,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedDomisi = state;
+                    });
+                  },
+                ),
 
                 //! sub children
               ],
             )),
             TextButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => CustomBottomNavBar()));
-              },
+              onPressed: inputCheck()
+                  ? () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => CustomBottomNavBar()));
+                    }
+                  : null,
               style: TextButton.styleFrom(
-                backgroundColor: cDarkYellow,
+                backgroundColor: inputCheck() ? cDarkYellow : cLightYellow,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 minimumSize: Size(MediaQuery.of(context).size.width * 0.8,
