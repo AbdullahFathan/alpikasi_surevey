@@ -189,7 +189,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
 
                 //++Pekerjaan++
                 DropDownCustom(
-                  kataHint: "Pekerjaan kamu saat ini",
+                  kataHint: "Pekerjaan",
                   data: pekerjaan,
                   onStateChanged: (state) {
                     setState(() {
@@ -200,7 +200,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
 
                 //++Status++
                 DropDownCustom(
-                  kataHint: "Status kamu saat in",
+                  kataHint: "Status",
                   data: status,
                   onStateChanged: (state) {
                     setState(() {
@@ -211,7 +211,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
 
                 //++Domisi++
                 DropDownCustom(
-                  kataHint: "Domisili kamu saat ini",
+                  kataHint: "Domisili",
                   data: domisi,
                   onStateChanged: (state) {
                     setState(() {

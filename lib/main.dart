@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kuisoner_app/screen/homepage.dart';
+import 'package:kuisoner_app/screen/isi_kuisoner_page.dart';
 
 import 'package:kuisoner_app/screen/login.dart';
-import 'package:kuisoner_app/screen/tukarpage.dart';
 import 'package:kuisoner_app/widget/bottomnavbar.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TukarPageScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
+import 'package:kuisoner_app/screen/penjelasan_reward_page.dart';
+import 'package:kuisoner_app/widget/card_reward.dart';
 
 class TukarPageScreen extends StatefulWidget {
   const TukarPageScreen({Key? key}) : super(key: key);
@@ -18,7 +20,6 @@ class _TukarPageScreenState extends State<TukarPageScreen> {
     return Scaffold(
       body: SafeArea(
           child: ListView(
-        physics: const BouncingScrollPhysics(),
         children: [
           Stack(
             children: [
@@ -134,71 +135,21 @@ class _TukarPageScreenState extends State<TukarPageScreen> {
           ),
           Container(
             margin: const EdgeInsets.only(left: 37, right: 35),
-            height: 400,
+            height: 600,
+            width: 340,
             child: ListView.builder(
                 itemCount: voucherReward.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: cDarkBlue, width: 1.3),
-                      borderRadius: BorderRadius.circular(8),
-                      color: cGreyYellow,
-                    ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            voucherReward[index]["image"],
-                            height: 90,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -1,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.82,
-                            height: 55,
-                            decoration: BoxDecoration(
-                                color: cDarkBlue,
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(14),
-                              child: Text(
-                                voucherReward[index]["name"],
-                                style: GoogleFonts.poppins(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: cDarkYellow),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            top: 15,
-                            right: 20,
-                            child: Container(
-                              height: 40,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                color: cDarkBlue,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 8, left: 15),
-                                child: Text(
-                                  voucherReward[index]["poin"],
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: cDarkYellow),
-                                ),
-                              ),
-                            ))
-                      ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  PenjelasanRewardPage(index: index)));
+                    },
+                    child: CardReward(
+                      index: index,
                     ),
                   );
                 }),

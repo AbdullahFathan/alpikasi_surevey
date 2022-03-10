@@ -146,7 +146,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
 
                 //++Status++
                 DropDownCustom(
-                  kataHint: "Status kamu saat in",
+                  kataHint: "Status kamu saat ini",
                   data: status,
                   onStateChanged: (state) {
                     setState(() {
