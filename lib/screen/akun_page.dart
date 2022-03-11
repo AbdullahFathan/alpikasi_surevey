@@ -96,6 +96,10 @@ class _AkunPageState extends State<AkunPage> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             controller: _emailInputControler,
                             decoration: InputDecoration(
                                 hintText: "Masukkan email anda",
@@ -117,6 +121,10 @@ class _AkunPageState extends State<AkunPage> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             controller: _passInputControler,
                             decoration: InputDecoration(
                                 hintText: "Masukkan kata sandi",
@@ -149,6 +157,10 @@ class _AkunPageState extends State<AkunPage> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             controller: _namaInputControler,
                             decoration: InputDecoration(
                                 hintText: "Masukkan nama pengguna",

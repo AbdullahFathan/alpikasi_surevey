@@ -26,10 +26,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 margin: const EdgeInsets.only(top: 100),
                 child: CarouselSlider.builder(
                   options: CarouselOptions(
+                    autoPlay: true,
                     height: 220,
                     viewportFraction: 1,
                     pageSnapping: false,
-                    enableInfiniteScroll: false,
                     onPageChanged: (index, reason) =>
                         setState(() => activeIndexSlider = index),
                   ),

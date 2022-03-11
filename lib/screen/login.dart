@@ -64,6 +64,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                     controller: _usernameInputControler,
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
                     decoration: InputDecoration(
                         hintText: "Nama Pengguna atau Email",
                         border: InputBorder.none,
@@ -86,6 +90,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: TextField(
                       controller: _passwordInputController,
+                      style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: cDarkBlue),
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Password",

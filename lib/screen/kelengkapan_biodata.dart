@@ -75,6 +75,10 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
                             controller: _emailInputControler,
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             decoration: InputDecoration(
                                 hintText: "Masukkan email anda",
                                 border: InputBorder.none,
@@ -95,6 +99,10 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             controller: _passInputControler,
                             decoration: InputDecoration(
                                 hintText: "Masukkan kata sandi",
@@ -127,6 +135,10 @@ class _KelengkapanBiodataState extends State<KelengkapanBiodata> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextField(
+                            style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: cDarkBlue),
                             controller: _namaInputControler,
                             decoration: InputDecoration(
                                 hintText: "Masukkan nama pengguna",

@@ -19,62 +19,43 @@ class _CardRewardState extends State<CardReward> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 15),
+      margin: const EdgeInsets.only(bottom: 14),
       width: 340,
-      height: 250,
+      height: 200,
       decoration: BoxDecoration(
-        border: Border.all(color: cDarkBlue, width: 1.3),
-        borderRadius: BorderRadius.circular(8),
-        color: cGreyYellow,
+        borderRadius: BorderRadius.circular(17),
       ),
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              voucherReward[widget.index]["image"],
-              height: 95,
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset("assets/images/latar_voucher2.jpg"),
           ),
           Positioned(
-            bottom: -1,
-            child: Container(
-              width: 340,
-              height: 55,
-              decoration: BoxDecoration(
-                  color: cDarkBlue, borderRadius: BorderRadius.circular(8)),
-              child: Padding(
-                padding: const EdgeInsets.all(14),
-                child: Text(
-                  voucherReward[widget.index]["name"],
-                  style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: cDarkYellow),
-                ),
-              ),
-            ),
-          ),
+              top: 40,
+              left: 100,
+              child: Image.asset(
+                voucherReward[widget.index]["image"],
+                height: 100,
+              )),
           Positioned(
-              top: 15,
-              right: 20,
-              child: Container(
-                height: 30,
-                width: 140,
-                decoration: BoxDecoration(
-                  color: cDarkBlue,
-                  borderRadius: BorderRadius.circular(60),
-                ),
-                child: Center(
-                  child: Text(
-                    voucherReward[widget.index]["poin"],
-                    style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: cDarkYellow),
-                  ),
-                ),
-              ))
+              top: 10,
+              left: 125,
+              child: Text(
+                voucherReward[widget.index]["poin"],
+                style: GoogleFonts.poppins(
+                    fontSize: 16, fontWeight: FontWeight.w600, color: cWhite),
+              )),
+          Positioned(
+              bottom: 25,
+              left: 75,
+              child: Text(
+                voucherReward[widget.index]["name"],
+                style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: cDarkBlue),
+              )),
         ],
       ),
     );

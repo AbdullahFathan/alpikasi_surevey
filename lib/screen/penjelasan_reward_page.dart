@@ -57,7 +57,11 @@ class _PenjelasanRewardPageState extends State<PenjelasanRewardPage> {
           const SizedBox(
             height: 20,
           ),
-          Center(child: CardReward(index: widget.index)),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              height: 250,
+              color: cDarkYellow,
+              child: Center(child: CardReward(index: widget.index))),
           const SizedBox(
             height: 25,
           ),

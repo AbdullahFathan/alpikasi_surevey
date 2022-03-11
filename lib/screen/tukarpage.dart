@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
 import 'package:kuisoner_app/screen/penjelasan_reward_page.dart';
+import 'package:kuisoner_app/screen/riwayat_page.dart';
 import 'package:kuisoner_app/widget/card_reward.dart';
 
 class TukarPageScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _TukarPageScreenState extends State<TukarPageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: cDarkYellow,
       body: SafeArea(
           child: ListView(
         children: [
@@ -103,40 +105,43 @@ class _TukarPageScreenState extends State<TukarPageScreen> {
               Positioned(
                   right: MediaQuery.of(context).size.width * 0.1,
                   bottom: 40,
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 3),
-                    width: MediaQuery.of(context).size.width * 0.2,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: cWhite,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/icon_riwayat.png",
-                          height: 35,
-                        ),
-                        Text(
-                          "Riwayat",
-                          style: GoogleFonts.poppins(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: cDarkBlue),
-                        ),
-                      ],
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => RiwayatPage()));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 3),
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: cWhite,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/icon_riwayat.png",
+                            height: 35,
+                          ),
+                          Text(
+                            "Riwayat",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: cDarkBlue),
+                          ),
+                        ],
+                      ),
                     ),
                   ))
             ],
           ),
-          const SizedBox(
-            height: 30,
-          ),
           Container(
-            margin: const EdgeInsets.only(left: 37, right: 35),
+            padding: const EdgeInsets.only(left: 37, right: 35, top: 15),
             height: 600,
-            width: 340,
+            width: MediaQuery.of(context).size.width,
             child: ListView.builder(
                 itemCount: voucherReward.length,
                 itemBuilder: (context, index) {

@@ -96,6 +96,10 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                       color: cGreyYellow,
                       borderRadius: BorderRadius.circular(15)),
                   child: TextField(
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
                     controller: _linkTextControler,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -140,6 +144,10 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                       color: cGreyYellow,
                       borderRadius: BorderRadius.circular(15)),
                   child: TextField(
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
                     controller: _usiaMinimalTextContoler,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -164,6 +172,10 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                       color: cGreyYellow,
                       borderRadius: BorderRadius.circular(15)),
                   child: TextField(
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
                     controller: _usiaMaxTextControler,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -260,6 +272,10 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                       color: cGreyYellow,
                       borderRadius: BorderRadius.circular(15)),
                   child: TextField(
+                    style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
                     controller: _opsionalTextCotroler,
                     decoration: InputDecoration(
                         border: InputBorder.none,

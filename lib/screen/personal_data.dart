@@ -111,7 +111,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: cLightBlue,
+                              color: cDarkBlue,
                             ),
                           ),
                           Image.asset(

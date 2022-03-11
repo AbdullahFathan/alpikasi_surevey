@@ -16,6 +16,7 @@ class IsiKuisonerPage extends StatefulWidget {
 }
 
 class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
+  bool isHasCheck = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +34,10 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
                       bottomRight: Radius.circular(12),
                     ),
                     color: cDarkBlue,
+                  ),
+                  child: Image.asset(
+                    homepageData[widget.index]["image"],
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Positioned(
@@ -226,7 +231,7 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
                           color: cDarkBlue),
                     ),
                     const SizedBox(
-                      height: 6,
+                      height: 10,
                     ),
                     Text(
                       "Diutamakan mahasiwa it\nSering menggunakan aplikasi gojek dan berbagai fiturnya",
@@ -236,7 +241,7 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
                           color: cLightBlue),
                     ),
                     const SizedBox(
-                      height: 17,
+                      height: 24,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,6 +267,23 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
               ),
             ),
             const SizedBox(height: 45),
+            CheckboxListTile(
+                title: Text(
+                  "Saya menyetujui persyaratan dan kriteria",
+                  style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: cDarkBlue),
+                ),
+                controlAffinity: ListTileControlAffinity.leading,
+                value: isHasCheck,
+                onChanged: (value) {
+                  setState(() {
+                    isHasCheck = value!;
+                    print("isHasChech =  $isHasCheck");
+                  });
+                }),
+
             Container(
               height: 70,
               width: 320,
