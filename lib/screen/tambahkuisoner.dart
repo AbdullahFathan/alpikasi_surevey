@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
 import 'package:kuisoner_app/screen/payment_succes_page.dart';
+import 'package:kuisoner_app/widget/kota_dropdown.dart';
 
 import '../widget/dropdown_custom.dart';
 
@@ -26,7 +27,10 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
       selectedStatus,
       selectedDomisi,
       selectedPaket,
-      selectedPembayaran;
+      selectedPembayaran,
+      selectedKota;
+
+  bool isCanPick = false;
 
   @override
   void dispose() {
@@ -231,9 +235,13 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                   onStateChanged: (state) {
                     setState(() {
                       selectedDomisi = state;
+                      isCanPick = true;
                     });
                   },
                 ),
+
+                //++Kota++
+                KotaDropDown(isCanPick: isCanPick, data: domisi),
 
                 //!sub childreen kriteria
               ],

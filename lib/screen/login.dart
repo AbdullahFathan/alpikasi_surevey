@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kuisoner_app/cubit/cubit/auth_cubit.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/screen/kelengkapan_biodata.dart';
 import 'package:kuisoner_app/widget/bottomnavbar.dart';
@@ -115,8 +117,64 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: isObscure,
                       onChanged: (value) => inputCheck()),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
 
                 //*===tombol masuk===
+
+                TextButton(
+                  onPressed: isContinue
+                      ? () => BlocProvider.of<AuthCubit>(context).login(
+                          _usernameInputControler.text,
+                          _passwordInputController.text)
+                      : null,
+                  style: TextButton.styleFrom(
+                    backgroundColor: isContinue ? cDarkYellow : cLightYellow,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    minimumSize: Size(MediaQuery.of(context).size.width * 0.8,
+                        MediaQuery.of(context).size.height * 0.07),
+                  ),
+                  child: BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {
+                      if (state is AuthSuccess) {
+                        print(" Data  state is AuthSuccess");
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => CustomBottomNavBar()),
+                        );
+                      } else if (state is AuthFailed) {
+                        print("data state is AuthFailed");
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)));
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is AuthLoading) {
+                        print("data state is AuthLoading");
+                        return SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            color: cDarkBlue,
+                            strokeWidth: 3,
+                          ),
+                        );
+                      }
+                      return Text("Masuk",
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
+                              color: cWhite));
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+
+                /*
                 GestureDetector(
                   onTap: isContinue
                       ? () {
@@ -141,6 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: cWhite)),
                       )),
                 ),
+                */
                 Padding(
                   padding: const EdgeInsets.only(top: 2, bottom: 20),
                   child: Text("Lupa Kata Sandi?",

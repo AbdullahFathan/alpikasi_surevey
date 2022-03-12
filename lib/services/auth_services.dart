@@ -34,12 +34,13 @@ class AuthServices {
       final data = jsonDecode(response.body);
 
       if (data['success'] == true) {
+        print(data[0]);
         await Cache.writeData(
           key: 'user_data',
           value: {
             'email': email,
-            'id_user': data['data']['id_user'],
-            'token': data['data']['token'],
+            'id_user': data['data'][0]['id_user'],
+            'token': data['data'][0]['token'],
           },
         );
         return true;
