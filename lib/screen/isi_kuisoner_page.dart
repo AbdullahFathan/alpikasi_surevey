@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
 import 'package:kuisoner_app/screen/berhasil_isi_kuisoner.dart';
+import 'package:kuisoner_app/screen/gform_webview.dart';
 
 class IsiKuisonerPage extends StatefulWidget {
   int index;
@@ -17,6 +18,8 @@ class IsiKuisonerPage extends StatefulWidget {
 
 class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
   bool isHasCheck = false;
+  String url =
+      "https://docs.google.com/forms/d/e/1FAIpQLSez6KBg99-khptrq_tJQppz1bDc0rxRZ-JB5AXohIKXyFNmSg/viewform";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,195 +78,193 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
               height: 35,
             ),
             //==={Kriteria Respoden}====
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 25, right: 25),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Kriteria Responden",
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: cDarkBlue,
+            Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Kriteria Responden",
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: cDarkBlue,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Usia",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cLightBlue),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Usia",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cLightBlue),
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/yess.png",
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "20-30",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: cDarkBlue),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Gender",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cLightBlue),
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/yess.png",
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Laki-Laki",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: cDarkBlue),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Pekerjaan",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cLightBlue),
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/yess.png",
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Mahasiswa",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: cDarkBlue),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Domisili",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cLightBlue),
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              "assets/images/yess.png",
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              "Jawa barat",
-                              style: GoogleFonts.poppins(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: cDarkBlue),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 17),
-                    //==={Persyaratan Tambahan}===
-                    Text(
-                      "Persyaratan Tambahan",
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: cDarkBlue),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Diutamakan mahasiwa it\nSering menggunakan aplikasi gojek dan berbagai fiturnya",
-                      style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: cLightBlue),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Poin yang didapat",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cDarkBlue),
-                        ),
-                        Text(
-                          "45 Poin",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: cDarkBlue),
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/yess.png",
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "20-30",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: cDarkBlue),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Gender",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cLightBlue),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/yess.png",
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Laki-Laki",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: cDarkBlue),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Pekerjaan",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cLightBlue),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/yess.png",
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Mahasiswa",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: cDarkBlue),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Domisili",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cLightBlue),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/yess.png",
+                            height: 18,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Jawa barat",
+                            style: GoogleFonts.poppins(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: cDarkBlue),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 17),
+                  //==={Persyaratan Tambahan}===
+                  Text(
+                    "Persyaratan Tambahan",
+                    style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: cDarkBlue),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Diutamakan mahasiwa it\nSering menggunakan aplikasi gojek dan berbagai fiturnya",
+                    style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: cLightBlue),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Poin yang didapat",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cDarkBlue),
+                      ),
+                      Text(
+                        "45 Poin",
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cDarkBlue),
+                      )
+                    ],
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 45),
@@ -294,7 +295,9 @@ class _IsiKuisonerPageState extends State<IsiKuisonerPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => BerhasilIsiKuisonerPage()));
+                          builder: (_) => GformWebView(
+                                urlGfrom: url,
+                              )));
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: cDarkYellow,

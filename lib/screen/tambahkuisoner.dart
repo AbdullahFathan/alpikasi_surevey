@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
 import 'package:kuisoner_app/screen/payment_succes_page.dart';
@@ -18,6 +21,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
   final _usiaMinimalTextContoler = TextEditingController();
   final _usiaMaxTextControler = TextEditingController();
   final _opsionalTextCotroler = TextEditingController();
+  File? imageFile;
   String? selectedGender,
       selectedPekerjaan,
       selectedStatus,
@@ -294,34 +298,34 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
             ),
           ),
           //++++ UPLOAD GAMBAR SECTION++++
-          Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: 90,
-            margin: const EdgeInsets.only(left: 25, top: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text("Upload Gambar",
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 90,
+              margin: const EdgeInsets.only(left: 25, top: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text("Upload Gambar",
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: cDarkBlue,
+                          )),
+                      Text(
+                        " (Opsional)",
                         style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
                           color: cDarkBlue,
-                        )),
-                    Text(
-                      " (Opsional)",
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: cDarkBlue,
-                      ),
-                    )
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
+                        ),
+                      )
+                    ],
+                  ),
+                  Container(
                     height: MediaQuery.of(context).size.height * 0.07,
                     padding: const EdgeInsets.only(right: 8, left: 8),
                     width: MediaQuery.of(context).size.width * 0.8,
@@ -345,8 +349,8 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
 

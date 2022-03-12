@@ -3,6 +3,7 @@ import 'package:kuisoner_app/screen/homepage.dart';
 import 'package:kuisoner_app/screen/isi_kuisoner_page.dart';
 
 import 'package:kuisoner_app/screen/login.dart';
+import 'package:kuisoner_app/screen/tambahkuisoner.dart';
 import 'package:kuisoner_app/screen/tukarpage.dart';
 import 'package:kuisoner_app/widget/bottomnavbar.dart';
 

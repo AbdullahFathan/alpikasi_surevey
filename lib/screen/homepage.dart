@@ -57,56 +57,56 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   ),
                   color: cDarkBlue,
                 ),
-                child: Positioned(
-                    top: 25,
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 40),
-                        Container(
-                          padding: const EdgeInsets.only(left: 10),
-                          width: 240,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: cWhite,
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.search,
+              ),
+              Positioned(
+                  top: 35,
+                  child: Row(
+                    children: [
+                      const SizedBox(width: 40),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10),
+                        width: 240,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: cWhite,
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.search,
+                              color: cLightBlue,
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "cari Kuisoner",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                                 color: cLightBlue,
                               ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                "cari Kuisoner",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: cLightBlue,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Image.asset(
-                          "assets/images/bell.png",
-                          height: 27,
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Image.asset(
-                          "assets/images/filter.png",
-                          height: 27,
-                        ),
-                      ],
-                    )),
-              ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Image.asset(
+                        "assets/images/bell.png",
+                        height: 27,
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Image.asset(
+                        "assets/images/filter.png",
+                        height: 27,
+                      ),
+                    ],
+                  )),
             ],
           ),
           Container(
