@@ -21,6 +21,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
   final _usiaMinimalTextContoler = TextEditingController();
   final _usiaMaxTextControler = TextEditingController();
   final _opsionalTextCotroler = TextEditingController();
+  final _namaKuisonerTextControler = TextEditingController();
   File? imageFile;
   String? selectedGender,
       selectedPekerjaan,
@@ -78,9 +79,54 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
       body: ListView(
         children: <Widget>[
           const SizedBox(height: 30),
-          //*++++ SECTION LINK KUISONER+++
+          //*+++NAMA KUISONER+++++
           Container(
             margin: const EdgeInsets.only(left: 25),
+            height: 95,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Nama Kuesioner",
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: cDarkBlue,
+                    )),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  padding: const EdgeInsets.only(right: 8, left: 8),
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  decoration: BoxDecoration(
+                      color: cGreyYellow,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: TextField(
+                    style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: cDarkBlue),
+                    controller: _namaKuisonerTextControler,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Tambahkan nama kuesioner kamu",
+                      hintStyle: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: cLightBlue),
+                    ),
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //*++++ SECTION LINK KUISONER+++
+          Container(
+            margin: const EdgeInsets.only(left: 25, top: 25),
             height: 95,
             width: MediaQuery.of(context).size.width * 0.8,
             child: Column(

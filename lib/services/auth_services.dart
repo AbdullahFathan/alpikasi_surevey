@@ -9,6 +9,7 @@ class AuthServices {
   Future<User?> checkAuth() async {
     final data = await Cache.getData('user_data');
     if (data != null) {
+      print("data == null di serviec_auth");
       return User(
           email: data['email'], token: data['token'], idUser: data['id_user']);
     }

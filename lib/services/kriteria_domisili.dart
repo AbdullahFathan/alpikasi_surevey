@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:http/http.dart' as http;
 import 'package:kuisoner_app/common/cahce.dart';
 import 'package:kuisoner_app/common/constant.dart';
 import 'package:kuisoner_app/models/gender.dart';
 import 'package:kuisoner_app/models/kota.dart';
+import 'package:kuisoner_app/models/paket.dart';
 import 'package:kuisoner_app/models/pekerjaan.dart';
 import 'package:kuisoner_app/models/provinsi.dart';
 import 'package:kuisoner_app/models/status.dart';
@@ -72,19 +72,28 @@ class KriteriaDomisili {
     return gender;
   }
 
-/*
   Future<List<Provinsi>> getProvinsi() async {
     final token = await getToken();
     final response = await http.get(
       Uri.parse("$BASE_URL/domisili/provinsi"),
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
         'Authorization': 'Bearer $token',
       },
     );
+    List<Provinsi> provinsi = [];
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      if (data["success"] == true) {
+        provinsi = (data["data"] as List<dynamic>)
+            .map((val) => Provinsi.fromJson(val))
+            .toList();
+      }
+    } else {
+      throw Exception("getStatus fail");
+    }
+    return provinsi;
   }
-  */
 
   Future<List<Kota>> getKotaByIdProvinsi(int id) async {
     final response = await http.get(Uri.parse("$BASE_URL/domisili/kota/$id"));
@@ -102,5 +111,20 @@ class KriteriaDomisili {
       throw Exception("getStatus fail");
     }
     return kota;
+  }
+
+  Future<List<Paket>> getPaket() async {
+    final response = await http.get(Uri.parse("$BASE_URL/kuesioner/paket"));
+    List<Paket> paket = [];
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      if (data["success"] == true) {
+        paket = (data["data"] as List<dynamic>)
+            .map((val) => Paket.fromJson(val))
+            .toList();
+      }
+    }
+    return paket;
   }
 }

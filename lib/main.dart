@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: BlocBuilder<AuthCubit, AuthState>(
             builder: (context, state) {
-              if (state is Authenticated)
+              if (state is Authenticated || state is AuthSuccess)
                 return CustomBottomNavBar();
               else if (state is AuthLoading)
                 return Scaffold(

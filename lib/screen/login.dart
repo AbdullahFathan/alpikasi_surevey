@@ -138,6 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: BlocConsumer<AuthCubit, AuthState>(
                     listener: (context, state) {
+                      print(state);
                       if (state is AuthSuccess) {
                         print(" Data  state is AuthSuccess");
                         Navigator.of(context).pushReplacement(
