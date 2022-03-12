@@ -15,10 +15,23 @@ class KriteriadomisiliLoading extends KriteriadomisiliState {
 }
 
 class KriteriadomisiliSuccess extends KriteriadomisiliState {
-  List<Object?> hasil;
-  KriteriadomisiliSuccess(this.hasil);
+  List<Object?> hasil1;
+  List<Object?> hasil2;
+  List<Object?> hasil3;
+  List<Object?> hasil4;
+  KriteriadomisiliSuccess(
+    this.hasil1,
+    this.hasil2,
+    this.hasil3,
+    this.hasil4,
+  );
   @override
-  List<Object?> get props => [hasil];
+  List<Object?> get props => [
+        hasil1,
+        hasil2,
+        hasil3,
+        hasil4,
+      ];
 }
 
 class KriteriadomisiliFailed extends KriteriadomisiliState {
@@ -26,4 +39,12 @@ class KriteriadomisiliFailed extends KriteriadomisiliState {
   KriteriadomisiliFailed(this.pesan);
   @override
   List<Object?> get props => [pesan];
+}
+
+class KriteriaKota extends KriteriadomisiliState {
+  List<Object?> hasil;
+  KriteriaKota(this.hasil);
+
+  @override
+  List<Object?> get props => [hasil];
 }

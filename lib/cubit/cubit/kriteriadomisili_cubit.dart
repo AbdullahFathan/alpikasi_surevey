@@ -11,49 +11,34 @@ class KriteriadomisiliCubit extends Cubit<KriteriadomisiliState> {
 
   void getPekerjaan() async {
     emit(KriteriadomisiliLoading());
+  }
+
+  void getKriteria(int id) async {
+    emit(KriteriadomisiliLoading());
+
     try {
-      final result = await services.getPekerjaan();
-      if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
+      final resultPaket = await services.getPaket();
+      final resultKota = await services.getKotaByIdProvinsi(id);
+      final resultProvinsi = await services.getProvinsi();
+      final resultGender = await services.getGender();
+      final resultStatus = await services.getStatus();
+      final resultPekerjaan = await services.getPekerjaan();
+
+      if (resultPaket != null &&
+          resultKota != null &&
+          resultProvinsi != null &&
+          resultGender != null &&
+          resultStatus != null &&
+          resultPekerjaan != null) {
+        emit(KriteriadomisiliSuccess(
+          resultPekerjaan,
+          resultStatus,
+          resultGender,
+          resultProvinsi,
+        ));
       }
     } catch (e) {
       emit(KriteriadomisiliFailed("getPekerjaan fail"));
-    }
-  }
-
-  void getStatus() async {
-    emit(KriteriadomisiliLoading());
-    try {
-      final result = await services.getStatus();
-      if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
-      }
-    } catch (e) {
-      emit(KriteriadomisiliFailed("getStatus fail"));
-    }
-  }
-
-  void getGender() async {
-    emit(KriteriadomisiliLoading());
-    try {
-      final result = await services.getGender();
-      if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
-      }
-    } catch (e) {
-      emit(KriteriadomisiliFailed("getGender fail"));
-    }
-  }
-
-  void getProvinsi() async {
-    emit(KriteriadomisiliLoading());
-    try {
-      final result = await services.getProvinsi();
-      if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
-      }
-    } catch (e) {
-      emit(KriteriadomisiliFailed("getProvinsi fail"));
     }
   }
 
@@ -62,22 +47,10 @@ class KriteriadomisiliCubit extends Cubit<KriteriadomisiliState> {
     try {
       final result = await services.getKotaByIdProvinsi(id);
       if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
+        emit(KriteriaKota(result));
       }
     } catch (e) {
       emit(KriteriadomisiliFailed("getKotaByIdProvinsi fail"));
-    }
-  }
-
-  void getPaket() async {
-    emit(KriteriadomisiliLoading());
-    try {
-      final result = await services.getPaket();
-      if (result != null) {
-        emit(KriteriadomisiliSuccess(result));
-      }
-    } catch (e) {
-      emit(KriteriadomisiliFailed("getPaketfail"));
     }
   }
 }
