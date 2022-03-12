@@ -9,7 +9,8 @@ class AuthServices {
   Future<User?> checkAuth() async {
     final data = await Cache.getData('user_data');
     if (data != null) {
-      return User(email: data['email'], idUser: data['id_user']);
+      return User(
+          email: data['email'], token: data['token'], idUser: data['id_user']);
     }
     return null;
   }
@@ -31,12 +32,14 @@ class AuthServices {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
+
       if (data['success'] == true) {
         await Cache.writeData(
           key: 'user_data',
           value: {
             'email': email,
-            'id_user': idUser,
+            'id_user': data['data']['id_user'],
+            'token': data['data']['token'],
           },
         );
         return true;

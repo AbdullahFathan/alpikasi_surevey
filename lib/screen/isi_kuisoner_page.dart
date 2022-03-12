@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
-import 'package:kuisoner_app/screen/berhasil_isi_kuisoner.dart';
 import 'package:kuisoner_app/screen/gform_webview.dart';
 
 class IsiKuisonerPage extends StatefulWidget {

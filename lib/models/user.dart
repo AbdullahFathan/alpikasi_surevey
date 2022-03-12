@@ -19,6 +19,7 @@ class User {
     this.idKota,
     this.namaProvinsi,
     this.namaKota,
+    token,
   });
 
   int? idUser;
