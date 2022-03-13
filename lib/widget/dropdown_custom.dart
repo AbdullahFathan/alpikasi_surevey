@@ -68,8 +68,6 @@ class _DropDownCustomState extends State<DropDownCustom> {
             },
           ),
           items: widget.data.map(buildMenuItem).toList(),
-          //pekrejaan.map((e)=> e.namaPerkerjaan).toList(),
-          //pekerjaan.map((e) {buildMenuItem(e.nama, e.id)})
         ),
       ),
     );
@@ -77,9 +75,9 @@ class _DropDownCustomState extends State<DropDownCustom> {
 }
 
 DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-      value: item, // bakal disi oleh id
+      value: item,
       child: Text(
-        item, // nama String pekerjaan
+        item,
         style: GoogleFonts.poppins(
           fontSize: 14,
           fontWeight: FontWeight.w500,

@@ -1,9 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kuisoner_app/cubit/cubit/kriteriadomisili_cubit.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
+import 'package:kuisoner_app/models/gender.dart';
+import 'package:kuisoner_app/models/pekerjaan.dart';
 import 'package:kuisoner_app/screen/payment_succes_page.dart';
 import 'package:kuisoner_app/widget/kota_dropdown.dart';
 
@@ -17,12 +21,13 @@ class TambahKuisonerScreen extends StatefulWidget {
 }
 
 class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
+  @override
   final _linkTextControler = TextEditingController();
   final _usiaMinimalTextContoler = TextEditingController();
   final _usiaMaxTextControler = TextEditingController();
   final _opsionalTextCotroler = TextEditingController();
   final _namaKuisonerTextControler = TextEditingController();
-  File? imageFile;
+
   String? selectedGender,
       selectedPekerjaan,
       selectedStatus,
@@ -241,6 +246,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                     textInputAction: TextInputAction.next,
                   ),
                 ),
+
                 //++Gender++
                 DropDownCustom(
                   kataHint: "Gender",
@@ -287,7 +293,7 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                 ),
 
                 //++Kota++
-                KotaDropDown(isCanPick: isCanPick, data: domisi),
+                KotaDropDown(isCanPick: isCanPick, data: kota),
 
                 //!sub childreen kriteria
               ],

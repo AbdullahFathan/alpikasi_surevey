@@ -9,23 +9,17 @@ class KriteriadomisiliCubit extends Cubit<KriteriadomisiliState> {
   final KriteriaDomisili services;
   KriteriadomisiliCubit(this.services) : super(KriteriadomisiliInitial());
 
-  void getPekerjaan() async {
-    emit(KriteriadomisiliLoading());
-  }
-
-  void getKriteria(int id) async {
+  void getKriteria() async {
     emit(KriteriadomisiliLoading());
 
     try {
       final resultPaket = await services.getPaket();
-      final resultKota = await services.getKotaByIdProvinsi(id);
       final resultProvinsi = await services.getProvinsi();
       final resultGender = await services.getGender();
       final resultStatus = await services.getStatus();
       final resultPekerjaan = await services.getPekerjaan();
 
       if (resultPaket != null &&
-          resultKota != null &&
           resultProvinsi != null &&
           resultGender != null &&
           resultStatus != null &&

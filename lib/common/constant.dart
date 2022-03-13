@@ -1,1 +1,1 @@
-const BASE_URL = "Http://9b10-114-125-110-140.ngrok.io";
+const BASE_URL = "http://de3a-114-125-126-237.ngrok.io";
