@@ -175,32 +175,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
 
-                /*
-                GestureDetector(
-                  onTap: isContinue
-                      ? () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => CustomBottomNavBar()));
-                        }
-                      : null,
-                  child: Container(
-                      margin: const EdgeInsets.only(top: 20, bottom: 20),
-                      decoration: BoxDecoration(
-                          color: isContinue ? cDarkYellow : cLightYellow,
-                          borderRadius: BorderRadius.circular(15)),
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      child: Center(
-                        child: Text("Masuk",
-                            style: GoogleFonts.poppins(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: cWhite)),
-                      )),
-                ),
-                */
                 Padding(
                   padding: const EdgeInsets.only(top: 2, bottom: 20),
                   child: Text("Lupa Kata Sandi?",

@@ -4,7 +4,6 @@ import 'package:kuisoner_app/cubit/cubit/auth_cubit.dart';
 import 'package:kuisoner_app/cubit/cubit/kriteriadomisili_cubit.dart';
 import 'package:kuisoner_app/screen/login.dart';
 import 'package:kuisoner_app/services/auth_services.dart';
-import 'package:kuisoner_app/screen/tambahkuisoner.dart';
 import 'package:kuisoner_app/services/kriteria_domisili.dart';
 import 'package:kuisoner_app/widget/bottomnavbar.dart';
 
