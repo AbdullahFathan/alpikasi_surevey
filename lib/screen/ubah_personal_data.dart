@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
+import 'package:kuisoner_app/widget/kota_dropdown.dart';
 
 import '../widget/dropdown_custom.dart';
 
@@ -15,10 +16,12 @@ class UbahPersonalDataPage extends StatefulWidget {
 class _UbahPersonalDataPageState extends State<UbahPersonalDataPage> {
   @override
   DateTime? tanggalLahirUpdate;
+  bool isCanPick = false;
   String? selectedGenderUpdate,
       selectedPekerjaanUpdate,
       selectedStatusUpdate,
-      selectedDomisiUpdate;
+      selectedDomisiUpdate,
+      selectedKotaUpdate;
 
   String getText() {
     if (tanggalLahirUpdate == null) {
@@ -118,7 +121,9 @@ class _UbahPersonalDataPageState extends State<UbahPersonalDataPage> {
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: cDarkBlue,
+                              color: tanggalLahirUpdate == null
+                                  ? cLightBlue
+                                  : cDarkBlue,
                             ),
                           ),
                           Image.asset(
@@ -169,9 +174,21 @@ class _UbahPersonalDataPageState extends State<UbahPersonalDataPage> {
                   onStateChanged: (state) {
                     setState(() {
                       selectedDomisiUpdate = state;
+                      isCanPick = true;
                     });
                   },
                 ),
+
+                //++KOTA++
+                DropDownCustom(
+                  kataHint: "Kota kamu saat ini",
+                  data: kota,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedKotaUpdate = state;
+                    });
+                  },
+                )
               ],
             ),
           ),

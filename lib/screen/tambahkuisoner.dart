@@ -293,7 +293,15 @@ class _TambahKuisonerScreenState extends State<TambahKuisonerScreen> {
                 ),
 
                 //++Kota++
-                KotaDropDown(isCanPick: isCanPick, data: kota),
+                DropDownCustom(
+                  kataHint: "Kota",
+                  data: kota,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedKota = state;
+                    });
+                  },
+                )
 
                 //!sub childreen kriteria
               ],

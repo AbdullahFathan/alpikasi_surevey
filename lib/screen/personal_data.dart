@@ -4,6 +4,7 @@ import 'package:kuisoner_app/models/colors.dart';
 import 'package:kuisoner_app/models/data_models.dart';
 import 'package:kuisoner_app/widget/bottomnavbar.dart';
 import 'package:kuisoner_app/widget/dropdown_custom.dart';
+import 'package:kuisoner_app/widget/kota_dropdown.dart';
 
 class PersonalDataScreen extends StatefulWidget {
   const PersonalDataScreen({Key? key}) : super(key: key);
@@ -14,7 +15,12 @@ class PersonalDataScreen extends StatefulWidget {
 
 class _PersonalDataScreenState extends State<PersonalDataScreen> {
   DateTime? tanggalLahir;
-  String? selectedGender, selectedPekerjaan, selectedStatus, selectedDomisi;
+  bool isCanPick = false;
+  String? selectedGender,
+      selectedPekerjaan,
+      selectedStatus,
+      selectedDomisi,
+      selectedKota;
 
   String getText() {
     if (tanggalLahir == null) {
@@ -97,7 +103,7 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                   },
                   child: Container(
                       padding: const EdgeInsets.only(right: 8, left: 8),
-                      margin: const EdgeInsets.only(bottom: 14, top: 70),
+                      margin: const EdgeInsets.only(bottom: 14, top: 50),
                       decoration: BoxDecoration(
                           color: cGreyYellow,
                           borderRadius: BorderRadius.circular(15)),
@@ -111,7 +117,8 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: cDarkBlue,
+                              color:
+                                  tanggalLahir == null ? cLightBlue : cDarkBlue,
                             ),
                           ),
                           Image.asset(
@@ -162,9 +169,20 @@ class _PersonalDataScreenState extends State<PersonalDataScreen> {
                   onStateChanged: (state) {
                     setState(() {
                       selectedDomisi = state;
+                      isCanPick = true;
                     });
                   },
                 ),
+                //++KOTA++
+                DropDownCustom(
+                  kataHint: "Kota kamu saat ini",
+                  data: kota,
+                  onStateChanged: (state) {
+                    setState(() {
+                      selectedKota = state;
+                    });
+                  },
+                )
 
                 //! sub children
               ],
